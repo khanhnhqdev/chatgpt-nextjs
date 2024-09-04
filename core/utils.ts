@@ -6,10 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-export const nanoid = customAlphabet(
-	'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
-	7
-) // 7-character random string
+// generate random 7-character strings 
+export const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 7);
 
 export async function fetcher<JSON = any>(
 	input: RequestInfo,
