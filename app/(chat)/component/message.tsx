@@ -9,9 +9,9 @@ import remarkMath from 'remark-math'
 import {readStreamableValue, StreamableValue} from 'ai/rsc'
 import {useEffect, useState} from 'react'
 
-export function UserMessage({children}: { children: React.ReactNode }) {
+export function UserMessage({children}: { children: React.ReactNode }) { 
 	return (
-		<div className="group relative flex items-start md:-ml-12">
+		<div className="group relative flex flex-end items-end md:-ml-12">
 			<div
 				className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border bg-background shadow-sm">
 				<IconUser/>

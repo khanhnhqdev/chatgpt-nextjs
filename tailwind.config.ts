@@ -18,8 +18,11 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['var(--font-geist-sans)'],
-				mono: ['var(--font-geist-mono)']
+				fontFamily: {
+					sans: ['Helvetica', 'Arial', 'sans-serif'], // Custom sans-serif font
+					serif: ['Georgia', 'serif'], // Custom serif font
+					mono: ['Courier New', 'monospace'], // Custom monospace font
+				  },
 			},
 			colors: {
 				border: 'hsl(var(--border))',
