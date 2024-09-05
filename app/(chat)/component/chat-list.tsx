@@ -20,15 +20,7 @@ export function ChatList({messages}) {
 					</div>
 					<div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
 						<p className="text-muted-foreground leading-normal">
-							Please{' '}
-							<Link href="/login" className="underline">
-								log in
-							</Link>{' '}
-							or{' '}
-							<Link href="/signup" className="underline">
-								sign up
-							</Link>{' '}
-							to save and revisit your chat history!
+							<b>Upcomming feature:</b> login/signup to save chat session !
 						</p>
 					</div>
 				</div>
@@ -36,9 +28,8 @@ export function ChatList({messages}) {
 			</>
 			
 			{messages.map((message, index) => (
-				<div key={message.id}>
+				<div key={message.id} className='mb-7'>
 					{message.display}
-					{index < messages.length - 1 && <Separator className="my-4"/>}
 				</div>
 			))}
 		</div>

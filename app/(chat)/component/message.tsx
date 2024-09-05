@@ -7,12 +7,12 @@ import {useEffect, useState} from 'react'
 
 export function UserMessage({children}: { children: React.ReactNode }) { 
 	return (
-		<div className="group relative flex flex-end items-end md:-ml-12">
-			<div
+		<div className="user-message-container group relative flex justify-end items-end md:-ml-12">
+			{/* <div
 				className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border bg-background shadow-sm">
 				<IconUser/>
-			</div>
-			<div className="ml-4 flex-1 space-y-2 overflow-hidden pl-2">
+			</div> */}
+			<div className="ml-4 flex-2 max-w-[50%] space-y-2 overflow-hidden bg-gray-200 rounded-lg p-3">
 				{children}
 			</div>
 		</div>
@@ -32,6 +32,8 @@ export function BotMessage({content}) {
 						setRawContent((value = value + delta))
 					}
 				}
+			} else {
+				setRawContent(content);
 			}
 		}
 
