@@ -18,6 +18,8 @@ export const useScrollAnchor = () => {
 		}
 	}, [])
 	
+
+	// scroll each time new message come
 	useEffect(() => {
 		if (messagesRef.current) {
 			if (!isVisible) {

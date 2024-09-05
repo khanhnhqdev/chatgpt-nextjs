@@ -13,7 +13,7 @@ export default function IndexPage() {
 			initialAIState={{chatId: id, messages: []}} 
 			initialUIState={[]}
 		>
-			<ChatContainer id={id} session={null} missingKeys={null}/>
+			<ChatContainer id={id}/>
 		</AI>
 
 	</>;

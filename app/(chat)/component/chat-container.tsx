@@ -13,7 +13,7 @@ import {useScrollAnchor} from '@/core/hook/use-scroll-anchor'
 import {toast} from 'sonner'
 import {ButtonScrollToBottom} from './button-scroll-to-bottom'
 
-export function ChatContainer({id, session, missingKeys}) {
+export function ChatContainer({id}) {
 	
 	const [input, setInput] = useState('');
 	const [messages] = useUIState();
