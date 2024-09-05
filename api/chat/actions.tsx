@@ -48,7 +48,7 @@ export async function continueConversation(input: string) {
 	'use server';
 	
 	const SYSTEM_PROMPT = ''; // update system prompt for context if needed
-	const MODEL = 'gpt-3.5-turbo'; // model name
+	const MODEL = 'gpt-4o'; // model name
 
 	// current state
 	const aiState = getMutableAIState<typeof AI>();
@@ -68,44 +68,53 @@ export async function continueConversation(input: string) {
 	let textStream: undefined | ReturnType<typeof createStreamableValue<string>>;
 	let textNode: undefined | React.ReactNode;
 
-	const result = await streamUI({
-		model: openai(MODEL),
-		messages: [...aiState.get().messages.map((message: any) => ({
-			role: message.role,
-			content: message.content,
-			name: message.name
-		}))],
-		system: `${SYSTEM_PROMPT}`,
-		text: ({ content, done, delta }) => {
-			if (!textStream) {
-				textStream = createStreamableValue('');
-				textNode = <BotMessage content={textStream.value}/>
+	let result;
+	let gptApiError = false;
+
+	try {
+		result = await streamUI({
+			model: openai(MODEL),
+			messages: [...aiState.get().messages.map((message: any) => ({
+				role: message.role,
+				content: message.content,
+				name: message.name
+			}))],
+			system: `${SYSTEM_PROMPT}`,
+			text: ({ content, done, delta }) => {
+				if (!textStream) {
+					textStream = createStreamableValue('');
+					textNode = <BotMessage content={textStream.value}/>
+				}
+				
+				if (done) {
+					textStream.done();
+					aiState.done({
+						...aiState.get(),
+						messages: [
+							...aiState.get().messages,
+							{
+								id: nanoid(),
+								role: 'assistant',
+								content
+							}
+						]
+					})
+				} else {
+					textStream.update(delta);
+				}
+				
+				return textNode;
 			}
-			
-			if (done) {
-				textStream.done();
-				aiState.done({
-					...aiState.get(),
-					messages: [
-						...aiState.get().messages,
-						{
-							id: nanoid(),
-							role: 'assistant',
-							content
-						}
-					]
-				})
-			} else {
-				textStream.update(delta);
-			}
-			
-			return textNode;
-		}
-	});
+		});
+	} catch(e) {
+		console.log(e);
+		gptApiError = true;
+	}
+	
 
 	return {
 		id: nanoid(),
-		display: result.value
+		display: !gptApiError ? result.value : <BotMessage content="An error occurred during the process. Please try again." />
 	}
 }
 
