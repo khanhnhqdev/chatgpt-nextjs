@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { PromptForm } from "./component/prompt-form";
 import {nanoid} from '@/core/utils'
-import { Chat } from "./component/chat";
+import {ChatContainer} from "./component/chat-container";
 import { AI } from "@/api/chat/actions";
 
 export default function IndexPage() {
@@ -14,7 +13,7 @@ export default function IndexPage() {
 			initialAIState={{chatId: id, messages: []}} 
 			initialUIState={[]}
 		>
-			<Chat id={id} session={null} missingKeys={null}/>
+			<ChatContainer id={id} session={null} missingKeys={null}/>
 		</AI>
 
 	</>;
