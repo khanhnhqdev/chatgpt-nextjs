@@ -35,27 +35,24 @@ export function EmptyScreen() {
 				<h1 className="text-lg font-semibold">
 					Welcome to Next.js AI Chatbot!
 				</h1>
-				<p className="leading-normal text-muted-foreground">
-					This is an open source AI chatbot app template built with{' '}
-					<ExternalLink href="https://nextjs.org">Next.js</ExternalLink>, the{' '}
-					<ExternalLink href="https://sdk.vercel.ai">
-						Vercel AI SDK
-					</ExternalLink>
-					, and{' '}
-					<ExternalLink href="https://vercel.com/storage/kv">
-						Vercel KV
-					</ExternalLink>
-					.
+				<p className="leading-normal text-muted-foreground text-justify">
+					This AI chatbot application is built using Next.js, incorporates real-time AI responses from OpenAI's GPT API, ensuring seamless conversations. The application is deployed on the free tier of Vercel.
 				</p>
-				<p className="leading-normal text-muted-foreground">
-					It uses{' '}
-					<ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-						React Server Components
-					</ExternalLink>{' '}
-					to combine text with generative UI as output of the LLM. The UI state
-					is synced through the SDK so the model is aware of your interactions
-					as they happen.
+				<p className="leading-normal text-muted-foreground mt-1 mb-1">
+					Key features of application:
 				</p>
+					
+				<p className="leading-normal text-muted-foreground mt-1">
+					<li className="mb-2">
+						Enter prompt to get answer like ChatGPT
+					</li>
+
+					<li className="mb-2">
+						Streams responses in real-time, creating a smooth and engaging chat experience for users.
+					</li>
+				</p>
+				
+
 			</div>
 		</div>
 	)
