@@ -42,3 +42,7 @@ Local run
 npm install
 npm run dev 
 ```
+
+### Demo
+
+![Nextjs Chatbot AI](./nextjs-chatbot-demo.gif)
