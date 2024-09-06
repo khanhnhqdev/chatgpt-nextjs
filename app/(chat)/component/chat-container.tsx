@@ -35,11 +35,6 @@ export function ChatContainer({id}) {
 				)}
 				<div className="w-full h-px visibility-div" ref={visibilityRef}/>
 			</div>
-			
-			<ButtonScrollToBottom
-				isAtBottom={isAtBottom}
-				scrollToBottom={scrollToBottom}
-			/>
 
 			<ChatPanel
 				id={id}
